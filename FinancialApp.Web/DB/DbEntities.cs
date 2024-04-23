@@ -8,6 +8,7 @@ public class DbEntities: DbContext
 {
     public virtual DbSet<Cuenta> Cuentas { get; set; }
     public virtual DbSet<TipoCuenta> TipoCuentas { get; set; }
+    public virtual DbSet<Transaccion> Transacciones { get; set; }
 
     public DbEntities(){}
     public DbEntities(DbContextOptions<DbEntities> options) : base(options) { }
@@ -19,7 +20,7 @@ public class DbEntities: DbContext
         modelBuilder.ApplyConfiguration(new TipoCuentaMapping());
     }
     
-    public static List<Transaccion> Transacciones = new();
+    
     
     
     public static List<Usuario> Usuarios = new()

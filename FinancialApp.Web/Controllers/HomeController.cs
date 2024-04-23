@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using FinancialApp.Web.DB;
 using Microsoft.AspNetCore.Mvc;
 using FinancialApp.Web.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -14,10 +15,27 @@ public class HomeController : Controller
     // {
     //     _logger = logger;
     // }
+    
+    private DbEntities dbEntities;
+
+    // public HomeController()
+    // {
+    //     
+    // }
+
+    public HomeController(DbEntities dbEntities)
+    {
+        this.dbEntities = dbEntities;
+    }
 
     public IActionResult Index()
     {
-        return View();
+        var currentMonth = DateTime.Now.Month;
+        var transactions = dbEntities.Transacciones
+            .Where(o => o.Fecha.Month == currentMonth)
+            .OrderByDescending(o => o.Fecha)
+            .ToList();
+        return View(transactions);
     }
 
     public IActionResult Privacy()

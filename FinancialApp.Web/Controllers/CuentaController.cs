@@ -32,7 +32,6 @@ public class CuentaController : Controller
             query = query.Where(o => o.Nombre.Contains(filtro));
         }
 
-
         var cuentas = query.ToList();
         
         
