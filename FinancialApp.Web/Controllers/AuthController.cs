@@ -27,6 +27,7 @@ public class AuthController : Controller
     {
         // si el usuario existe en la base de datos generar la cookie, caso contrario mostrar mensaje de usaurio o password erroneo
 
+        // throw new Exception("error");
         if (username == "admin")
         {
             var claims = new List<Claim>()

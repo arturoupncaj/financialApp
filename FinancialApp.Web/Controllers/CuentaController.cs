@@ -97,6 +97,7 @@ public class CuentaController : Controller
         return RedirectToAction("Index");
     }
     
+    
     [HttpGet]
     public IActionResult Delete(int id)
     {

@@ -24,6 +24,8 @@ builder.Services.AddTransient<ITipoCuentaRepositorio, TipoCuentaRepositorio>();
 builder.Services.AddTransient<ICuentaRepositorio, CuentaRepositorio>();
 builder.Services.AddTransient<IHttpContextWrapper, DefaultHttpContextWrapper>();
 
+builder.Services.AddTransient<ITransactionRepository, TransactionRepository>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

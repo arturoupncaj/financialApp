@@ -2,6 +2,7 @@
 using FinancialApp.Web.DB;
 using Microsoft.AspNetCore.Mvc;
 using FinancialApp.Web.Models;
+using FinancialApp.Web.Repositories;
 using Microsoft.AspNetCore.Authorization;
 
 namespace FinancialApp.Web.Controllers;
@@ -15,26 +16,18 @@ public class HomeController : Controller
     // {
     //     _logger = logger;
     // }
-    
-    private DbEntities dbEntities;
 
-    // public HomeController()
-    // {
-    //     
-    // }
+    private readonly ITransactionRepository transactionRepository;
 
-    public HomeController(DbEntities dbEntities)
+    public HomeController(ITransactionRepository transactionRepository)
     {
-        this.dbEntities = dbEntities;
+        this.transactionRepository = transactionRepository;
     }
 
-    public IActionResult Index()
+    public IActionResult Index(int? month)
     {
-        var currentMonth = DateTime.Now.Month;
-        var transactions = dbEntities.Transacciones
-            .Where(o => o.Fecha.Month == currentMonth)
-            .OrderByDescending(o => o.Fecha)
-            .ToList();
+        var currentMonth = month != null ? month.GetValueOrDefault() : DateTime.Now.Month;
+        var transactions = transactionRepository.GetTransactionsByMonth(currentMonth);
         return View(transactions);
     }
 
