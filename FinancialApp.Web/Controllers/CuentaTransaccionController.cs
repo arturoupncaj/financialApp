@@ -41,6 +41,16 @@ public class CuentaTransaccionController : Controller
 
         return RedirectToAction("Index", new { cuentaId = cuentaId});
     }
+
+    [HttpGet]
+    public IActionResult Eliminar(int id)
+    {
+        var transaction = dbEntities.Transacciones.Find(id);
+        var cuentaId = transaction.CuentaId;
+        dbEntities.Transacciones.Remove(transaction);
+        dbEntities.SaveChanges();
+        return RedirectToAction("Index", new { cuentaId });
+    }
     
    
 }
