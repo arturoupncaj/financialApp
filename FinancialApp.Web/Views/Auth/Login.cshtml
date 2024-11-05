@@ -2,6 +2,7 @@
 
 <div class="row ">
     <div class="col-md-4 offset-4">
+        <h2>Inicio de Sesión</h2>
         <form method="post" class="mt-5" action="/auth/login">
 
             @Html.ValidationMessage("AuthError")
@@ -11,9 +12,9 @@
             </div>
             <div class="mb-3">
                 <label fclass="form-label">Password</label>
-                <input type="password" name="password" id="password"  class="form-control">
+                <input type="password" name="password" id="password" class="form-control">
             </div>
-            
+
             <br>
             <button class="btn btn-primary" id="btnLogin">Login</button>
         </form>

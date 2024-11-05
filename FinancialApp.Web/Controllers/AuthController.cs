@@ -42,6 +42,8 @@ public class AuthController : Controller
             return RedirectToAction("Index", "Cuenta");
         }
         
+        // HttpContext.Response.StatusCode = 401;
+        
         ModelState.AddModelError("AuthError", "Usuario y/o contraseña erronea");
         return View();
     }

@@ -64,6 +64,7 @@ public class CuentaController : Controller
         if (!ModelState.IsValid)
         {
             ViewBag.TipoDeCuentas = _dbEntities.TipoCuentas.ToList();
+            
             return View("Create", cuenta);
         }
         
