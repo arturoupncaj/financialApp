@@ -37,7 +37,7 @@ public class TipoCambio2 : ITipoCambio
 
 public class Calculadora
 {
-    private readonly ITipoCambio _tipoCambio;
+    private readonly ITipoCambio _tipoCambio
     public Calculadora(ITipoCambio tipoCambio)
     {
         _tipoCambio = tipoCambio;
